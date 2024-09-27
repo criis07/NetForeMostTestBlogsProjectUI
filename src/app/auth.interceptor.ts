@@ -1,7 +1,7 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
-  const token = localStorage.getItem('token');  // Obtener el token del almacenamiento local
+  const token = localStorage.getItem('authToken');  // Obtener el token del almacenamiento local
   const apiKey = 'ec880424-5ae9-4b04-8aec-ce1aefa10e22';  // Tu x-api-key
 
   // Clonar la solicitud original y añadir los encabezados necesarios
