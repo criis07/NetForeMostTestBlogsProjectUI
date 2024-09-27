@@ -1,0 +1,30 @@
+/* Estilos para el contenedor del filtro */
+.filter-container {
+    margin-bottom: 1.5rem; /* Espacio inferior */
+    display: flex; /* Usar flexbox para alinear el contenido */
+    align-items: center; /* Alinear verticalmente */
+    margin-left: 12%;
+    margin-top: 2rem;
+  }
+  
+  /* Estilos para la etiqueta */
+  .filter-container label {
+    margin-right: 10px; /* Espacio a la derecha */
+    font-weight :450; /* Negrita para el label */
+  }
+  
+  /* Estilos para el select */
+  .filter-select {
+    padding: 10px 15px; /* Padding interno */
+    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid #f7eaff; /* Borde gris claro */
+    background-color: #f8f0ff; /* Fondo gris claro */
+    transition: border-color 0.3s, background-color 0.3s; /* Transición suave */
+  }
+  
+  /* Cambios de estilo al pasar el mouse */
+  .filter-select:hover {
+    border-color: #e4baf8; /* Cambia el color del borde */
+    background-color: #f0f0f0; /* Cambia el color de fondo */
+  }
+  

@@ -1,9 +1,9 @@
 export interface BlogEntry {
-    blogEntryId?: number;
+    blogId :number;
     title: string;
     content: string;
-    categoryId: number;
+    categoryIds: number[];
     publicationDate: string; 
-    userId: number;          
-    categoryNames: string[];
+    userId: number;    
+    categoryNames:  string[];  
   }
