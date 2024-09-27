@@ -36,6 +36,9 @@ export class BlogService {
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(`${this.apiUrl}/api/categories`);
   }
-  
+  filterBlogsByCategory(blogs: BlogEntry[], category: string): BlogEntry[] {
+    if (!category) return blogs;
+    return blogs.filter(blog => blog.categoryNames.includes(category));
+  }
 }
 
