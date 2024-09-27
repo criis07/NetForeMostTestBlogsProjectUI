@@ -1,14 +1,14 @@
 <app-home></app-home>
-<div class="bg-indigo-50 min-h-screen md:px-20 pt-6">
+<div class="min-h-screen md:px-20 pt-6">
   <div class="bg-white rounded-md px-6 py-10 max-w-2xl mx-auto shadow-md">
-    <h2 class="text-center text-2xl font-bold text-gray-500 mb-10">{{ isEditMode ? 'Editar entrada de un blog' : 'Crear una nueva entrada de un blog' }}</h2>
+    <h2 class="text-center text-2xl font-bold text-gray-500 mb-10 font-sans">{{ isEditMode ? 'Editar entrada de un blog' : 'Crear una nueva entrada de un blog' }}</h2>
     
     <form [formGroup]="entryForm" (ngSubmit)="onSubmit()">
       <div class="space-y-4">
         
         <!-- Título -->
         <div>
-          <label for="title" class="block text-gray-700 text-lg font-serif mb-2">Titulo:</label>
+          <label for="title" class="block text-gray-700 text-lg font-sans mb-2">Título:</label>
           <input 
             id="title" 
             formControlName="title" 
@@ -17,46 +17,44 @@
             [ngClass]="{'border-red-500': entryForm.get('title')?.invalid && (entryForm.get('title')?.touched || entryForm.get('title')?.dirty)}"
           />
           <div *ngIf="entryForm.get('title')?.invalid && (entryForm.get('title')?.touched || entryForm.get('title')?.dirty)" class="text-red-500 text-xs mt-1">
-            <div *ngIf="entryForm.get('title')?.errors?.['required']">Title is required.</div>
-            <div *ngIf="entryForm.get('title')?.errors?.['maxlength']">Title cannot exceed 100 characters.</div>
+            <div *ngIf="entryForm.get('title')?.errors?.['required']">El título es requerido.</div>
+            <div *ngIf="entryForm.get('title')?.errors?.['maxlength']">El título no puede exceder los 100 caracteres.</div>
           </div>
         </div>
 
         <!-- Contenido -->
         <div>
-          <label for="content" class="block text-gray-700 text-lg font-serif mb-2">Contenido:</label>
+          <label for="content" class="block text-gray-700 text-lg font-sans mb-2">Contenido:</label>
           <textarea 
             id="content" 
             formControlName="content" 
             placeholder="Escriba Aquí..." 
-            class="w-full p-4 text-gray-600 bg-indigo-50 outline-none border-2 rounded-md"
+            class="w-full p-4 text-gray-600 outline-none border-2 rounded-md"
             [ngClass]="{'border-red-500': entryForm.get('content')?.invalid && (entryForm.get('content')?.touched || entryForm.get('content')?.dirty)}"
           ></textarea>
           <div *ngIf="entryForm.get('content')?.invalid && (entryForm.get('content')?.touched || entryForm.get('content')?.dirty)" class="text-red-500 text-xs mt-1">
-            <div *ngIf="entryForm.get('content')?.errors?.['required']">Content is required.</div>
+            <div *ngIf="entryForm.get('content')?.errors?.['required']">El contenido es requerido.</div>
           </div>
         </div>
 
         <div *ngIf="!isEditMode">
-            <label for="categoryIds">Categorías:</label>
-            <div *ngFor="let category of categories">
-              <input 
-                type="checkbox" 
-                [value]="category.categoryId" 
-                (change)="onCategoryChange($event)" 
-                [checked]="entryForm.get('categoryIds')?.value.includes(category.categoryId)"
-              /> {{ category.name }}
-            </div>
-            <div *ngIf="entryForm.get('categoryIds')?.invalid && (entryForm.get('categoryIds')?.touched || entryForm.get('categoryIds')?.dirty)">
-              <div *ngIf="entryForm.get('categoryIds')?.errors?.['required']">Se requiere al menos una categoría.</div>
-            </div>
+          <label for="categoryIds" class="block text-gray-700 text-lg font-sans mb-2">Categorías:</label>
+          <div *ngFor="let category of categories">
+            <input 
+              type="checkbox" 
+              [value]="category.categoryId" 
+              (change)="onCategoryChange($event)" 
+              [checked]="entryForm.get('categoryIds')?.value.includes(category.categoryId)"
+            /> {{ category.name }}
           </div>
-          
-          
+          <div *ngIf="entryForm.get('categoryIds')?.invalid && (entryForm.get('categoryIds')?.touched || entryForm.get('categoryIds')?.dirty)">
+            <div *ngIf="entryForm.get('categoryIds')?.errors?.['required']">Se requiere al menos una categoría.</div>
+          </div>
+        </div>
 
         <!-- Botón de enviar -->
-        <button type="submit" class="w-full mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 rounded-md" [disabled]="entryForm.invalid">
-          {{ isEditMode ? 'Update Post' : 'Add Post' }}
+        <button type="submit" class="w-full mt-4 bg-purple-700 hover:bg-purple-400 text-white font-bold py-2 rounded-md" [disabled]="entryForm.invalid">
+          {{ isEditMode ? 'Actualizar entrada' : 'Agregar entrada' }}
         </button>
       </div>
     </form>

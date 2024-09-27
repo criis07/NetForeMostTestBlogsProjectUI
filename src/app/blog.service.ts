@@ -14,7 +14,7 @@ export class BlogService {
 
   
   getBlogEntries(): Observable<BlogEntry[]> {
-    return this.http.get<BlogEntry[]>(`${this.apiUrl}/api/categories`);
+    return this.http.get<BlogEntry[]>(`${this.apiUrl}/api/blogs`);
   }
 
   getEntryById(id: number) {
@@ -30,7 +30,7 @@ export class BlogService {
   }
 
   deleteEntry(id: number) {
-    return this.http.delete(`/api/blog-entries/${id}`);
+    return this.http.delete(`${this.apiUrl}/api/blog/${id}`);
   }
 
   getCategories(): Observable<Category[]> {
