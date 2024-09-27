@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Category } from './interfaces/Category';
+import { Category } from './Interfaces/Category';
 import { environment } from '../app/Environments/Environment';
 import { Observable } from 'rxjs';
-import { BlogEntry } from './interfaces/BlogEntry';
+import { BlogEntry } from './Interfaces/BlogEntry';
 
 @Injectable({
   providedIn: 'root',
@@ -18,15 +18,15 @@ export class BlogService {
   }
 
   getEntryById(id: number) {
-    return this.http.get(`/api/blog-entries/${id}`);
+    return this.http.get(`${this.apiUrl}/api/blog/${id}`);
   }
 
   createEntry(entryData: any) {
-    return this.http.post('/api/blog-entries', entryData);
+    return this.http.post(`${this.apiUrl}/api/blog`, entryData);
   }
 
   updateEntry(id: number, entryData: any) {
-    return this.http.put(`/api/blog-entries/${id}`, entryData);
+    return this.http.put(`${this.apiUrl}/api/blog/${id}`, entryData);
   }
 
   deleteEntry(id: number) {
