@@ -48,5 +48,13 @@ export class AuthService {
     const token = localStorage.getItem('authToken');
     return !!token;  // Devuelve true si hay un token guardado, de lo contrario false
   }
-    
+  updateUser(id: number, entryData: any) {
+    return this.http.put(`${this.apiUrl}/api/user/${id}`, entryData);
+  }
+  getUserById(id: number) {
+    return this.http.get(`${this.apiUrl}/api/user/${id}`);
+  }
+  deleteUser(id: number) {
+    return this.http.delete(`${this.apiUrl}/api/user/${id}`);
+  }
 }
